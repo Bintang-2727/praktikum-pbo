@@ -359,7 +359,6 @@ class Transaksi:
         Transaksi.kode_counter += 1
         self.kode = Transaksi.buat_kode_transaksi(Transaksi.kode_counter)
         self.pembeli = pembeli.nama
-        # KOMPOSISI: ItemTransaksi dibuat LANGSUNG di dalam Transaksi
         self.__daftar_item = [
             ItemTransaksi(produk.nama, produk.hitung_harga_akhir(), jumlah)
             for produk, jumlah in daftar_item
@@ -419,10 +418,9 @@ if __name__ == "__main__":
     admin2 = Admin.dari_dict({"username": "admin_kasir", "password": "password456", "role": "Kasir"})
     admin2.login("admin_kasir", "salah_pass")
     print(f"Password admin1 (Property Getter): {admin1.password}")
-    admin1.password = "123"   # uji setter invalid
+    admin1.password = "123"
     print(f"Validasi username 'admin_kasir': {Admin.validasi_username('admin_kasir')}\n")
 
-    # ------------------------------------------------------------
     print(">>> 2. INHERITANCE: Superclass Produk -> Baju, Celana, Aksesoris <<<")
     baju1 = Baju("Kaos Lacoste", "Lacoste", 250000, 10, 150000, "L", "Katun")
     baju2 = Baju("Jaket H&M", "H&M", 550000, 5, 350000, "XL", "Fleece")
